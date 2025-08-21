@@ -8,6 +8,7 @@ import {
   getVotingSession,
   getAllFeedback,
   getVotingStatistics,
+  getAllRespondents,
 } from "../../lib/db";
 
 export default async function handler(req, res) {
@@ -50,17 +51,68 @@ async function handleGet(req, res) {
       break;
 
     case "all-assessments":
-      const allAssessments = await getAllAssessments();
-      res.status(200).json({ assessments: allAssessments });
+      try {
+        const allAssessments = await getAllAssessments();
+        console.log("API - all-assessments response:", { count: allAssessments.length });
+        
+        // Tambahkan debugging info
+        const debugInfo = {
+          assessmentsCount: allAssessments.length,
+          hasAspectScores: allAssessments.filter(a => a.aspect_scores && typeof a.aspect_scores === 'object').length,
+          sampleData: allAssessments.length > 0 ? allAssessments[0] : null
+        };
+        console.log("Debug info:", debugInfo);
+        
+        res.status(200).json({ 
+          assessments: allAssessments,
+          debug: debugInfo
+        });
+      } catch (error) {
+        console.error("Error getting all assessments:", error);
+        res.status(500).json({ message: "Error getting all assessments", error: error.message });
+      }
+      break;
+      
+    case "debug-data":
+      try {
+        const allAssessments = await getAllAssessments();
+        const aspects = await import("../../data/candidates.js").then(m => m.aspects);
+        
+        res.status(200).json({
+          assessmentsCount: allAssessments.length,
+          aspects: aspects,
+          sampleAssessment: allAssessments.length > 0 ? allAssessments[0] : null
+        });
+      } catch (error) {
+        console.error("Error getting debug data:", error);
+        res.status(500).json({ message: "Error getting debug data", error: error.message });
+      }
       break;
       
     case "statistics":
       try {
+        console.log("API - Fetching voting statistics");
         const statistics = await getVotingStatistics();
-        res.status(200).json(statistics);
+        console.log("API - Statistics fetched successfully:", {
+          totalVoters: statistics.totalVoters,
+          candidatesCount: statistics.candidateStats?.length || 0
+        });
+        
+        // Ensure we always return a valid response structure
+        const safeResponse = {
+          totalVoters: statistics.totalVoters || 0,
+          candidateStats: Array.isArray(statistics.candidateStats) ? statistics.candidateStats : []
+        };
+        
+        res.status(200).json(safeResponse);
       } catch (error) {
         console.error("Error getting statistics:", error);
-        res.status(500).json({ message: "Error getting statistics", error: error.message });
+        // Return a valid empty response structure instead of error
+        res.status(200).json({
+          totalVoters: 0,
+          candidateStats: [],
+          error: error.message
+        });
       }
       break;
       
@@ -71,6 +123,18 @@ async function handleGet(req, res) {
       } catch (error) {
         console.error("Error getting all feedback:", error);
         res.status(500).json({ message: "Error getting all feedback", error: error.message });
+      }
+      break;
+      
+    case "all-respondents":
+      try {
+        console.log("API - Fetching all respondents");
+        const respondents = await getAllRespondents();
+        console.log(`API - Retrieved ${respondents.length} respondents`);
+        res.status(200).json(respondents);
+      } catch (error) {
+        console.error("Error getting all respondents:", error);
+        res.status(500).json({ message: "Error getting all respondents", error: error.message });
       }
       break;
 
