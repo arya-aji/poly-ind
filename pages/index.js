@@ -51,7 +51,7 @@ export default function Home() {
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Sistem penilaian komprehensif 360 derajat untuk mengevaluasi
             performa kepemimpinan Kepala BPS Kota Jakarta Pusat berdasarkan 11
-            aspek BERAKHLAK PNS: Berorientasi Pelayanan, Akuntabel, Kompeten,
+            aspek BERAKHLAK ASN: Berorientasi Pelayanan, Akuntabel, Kompeten,
             Harmonis, Loyal, Adaptif, Kolaboratif, Komitmen, Inisiatif Kerja,
             Kerjasama, dan Kepemimpinan.
           </p>

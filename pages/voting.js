@@ -327,6 +327,7 @@ export default function Voting() {
           </p>
 
           <p className="mb-2">Trmksh.</p>
+          <p className="mb-2">-Undich Sadewo Sunu, M.Si.</p>
 
           <p className="mt-4 text-sm font-medium text-gray-700 border-t pt-3">
             #Jaminan kerahasiaan respoden akan dijaga.
