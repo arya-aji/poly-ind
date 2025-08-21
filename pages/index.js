@@ -42,7 +42,7 @@ export default function Home() {
             BERAKHLAK 360
           </h1>
           <h2 className="text-2xl md:text-3xl font-semibold text-cyan-600 mb-2">
-            Performa 360 Kepala Jakarta Pusat
+            Performa 360 Kepala BPS Jakarta Pusat
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Sistem penilaian komprehensif 360 derajat untuk mengevaluasi performa kepemimpinan 

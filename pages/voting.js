@@ -359,7 +359,7 @@ export default function Voting() {
               {candidates.map((candidate) => (
                 <div key={candidate.name} className="mb-2 w-full">
                   <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-2 px-1 sm:px-2">
-                    BERAKHLAK 360 - Penilaian Kepala Jakarta Pusat
+                    BERAKHLAK 360 - Penilaian Kepala BPS Jakarta Pusat
                   </h1>
                   <hr className="border-gray-300 w-full my-3 sm:my-4" />
                   <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-800">
