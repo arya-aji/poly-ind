@@ -112,9 +112,11 @@ export default function Voting() {
   };
 
   const hasAnyFeedback = () => {
-    return feedback.kesan.trim() !== "" || 
-           feedback.kritik.trim() !== "" || 
-           feedback.saran.trim() !== "";
+    return (
+      feedback.kesan.trim() !== "" ||
+      feedback.kritik.trim() !== "" ||
+      feedback.saran.trim() !== ""
+    );
   };
 
   // Removed navigation functions as all aspects are shown at once
@@ -190,7 +192,8 @@ export default function Voting() {
       candidates.forEach((candidate) => {
         aspectScoresData[candidate.name] = {};
         aspects.forEach((aspect) => {
-          aspectScoresData[candidate.name][aspect.name] = votes[candidate.name]?.[aspect.name] || 0;
+          aspectScoresData[candidate.name][aspect.name] =
+            votes[candidate.name]?.[aspect.name] || 0;
         });
       });
 
@@ -203,17 +206,20 @@ export default function Voting() {
       };
 
       // Submit integrated data to database using new endpoint
-      const response = await fetch("/api/votes?action=submit-integrated-assessment", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email,
-          integratedData: integratedData,
-          sessionData: sessionData,
-        }),
-      });
+      const response = await fetch(
+        "/api/votes?action=submit-integrated-assessment",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+            integratedData: integratedData,
+            sessionData: sessionData,
+          }),
+        }
+      );
 
       if (!response.ok) {
         const errorData = await response.json();
@@ -259,7 +265,7 @@ export default function Voting() {
           </h2>
           <p className="text-gray-600 mb-4">
             Terima kasih atas partisipasi Anda dalam penilaian performa Kepala
-            BPS Jakarta Pusat.
+            BPS Kota Jakarta Pusat.
           </p>
           <p className="text-sm text-gray-500">
             Anda akan diarahkan kembali ke halaman utama...
@@ -282,7 +288,10 @@ export default function Voting() {
     <div className="min-h-screen bg-gradient-to-br from-cyan-50 to-blue-100">
       <Head>
         <title>Penilaian | BERAKHLAK 360</title>
-        <meta name="description" content="Formulir penilaian performa kepemimpinan Kepala BPS Jakarta Pusat" />
+        <meta
+          name="description"
+          content="Formulir penilaian performa kepemimpinan Kepala BPS Kota Jakarta Pusat"
+        />
       </Head>
       {/* Welcome Modal */}
       <Modal
@@ -359,7 +368,7 @@ export default function Voting() {
               {candidates.map((candidate) => (
                 <div key={candidate.name} className="mb-2 w-full">
                   <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-2 px-1 sm:px-2">
-                    BERAKHLAK 360 - Penilaian Kepala BPS Jakarta Pusat
+                    BERAKHLAK 360 - Penilaian Kepala BPS Kota Jakarta Pusat
                   </h1>
                   <hr className="border-gray-300 w-full my-3 sm:my-4" />
                   <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-800">

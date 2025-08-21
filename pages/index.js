@@ -27,13 +27,17 @@ export default function Home() {
     initializeDB();
   }, []);
 
-
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-cyan-50 to-blue-100">
       <Head>
-        <title>BERAKHLAK 360 | Sistem Penilaian Performa Kepala BPS Jakarta Pusat</title>
-        <meta name="description" content="Sistem penilaian komprehensif 360 derajat untuk mengevaluasi performa kepemimpinan Kepala BPS Jakarta Pusat" />
+        <title>
+          BERAKHLAK 360 | Sistem Penilaian Performa Kepala BPS Kota Jakarta
+          Pusat
+        </title>
+        <meta
+          name="description"
+          content="Sistem penilaian komprehensif 360 derajat untuk mengevaluasi performa kepemimpinan Kepala BPS Kota Jakarta Pusat"
+        />
       </Head>
       <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-8">
@@ -42,12 +46,13 @@ export default function Home() {
             BERAKHLAK 360
           </h1>
           <h2 className="text-2xl md:text-3xl font-semibold text-cyan-600 mb-2">
-            Performa 360 Kepala BPS Jakarta Pusat
+            Performa 360 Kepala BPS Kota Jakarta Pusat
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Sistem penilaian komprehensif 360 derajat untuk mengevaluasi performa kepemimpinan 
-            Kepala BPS Jakarta Pusat berdasarkan 11 aspek BERAKHLAK PNS: Berorientasi Pelayanan, 
-            Akuntabel, Kompeten, Harmonis, Loyal, Adaptif, Kolaboratif, Komitmen, Inisiatif Kerja, 
+            Sistem penilaian komprehensif 360 derajat untuk mengevaluasi
+            performa kepemimpinan Kepala BPS Kota Jakarta Pusat berdasarkan 11
+            aspek BERAKHLAK PNS: Berorientasi Pelayanan, Akuntabel, Kompeten,
+            Harmonis, Loyal, Adaptif, Kolaboratif, Komitmen, Inisiatif Kerja,
             Kerjasama, dan Kepemimpinan.
           </p>
           {isInitializing && (
