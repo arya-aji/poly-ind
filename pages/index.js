@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 export default function Home() {
   const [isInitializing, setIsInitializing] = useState(true);
@@ -30,20 +31,24 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-cyan-50 to-blue-100">
+      <Head>
+        <title>BERAKHLAK 360 | Sistem Penilaian Performa Kepala BPS Jakarta Pusat</title>
+        <meta name="description" content="Sistem penilaian komprehensif 360 derajat untuk mengevaluasi performa kepemimpinan Kepala BPS Jakarta Pusat" />
+      </Head>
       <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-8">
           <img src="/bps.png" className="w-12 h-12 mx-auto mb-4"></img>
           <h1 className="text-4xl md:text-6xl font-bold text-gray-800 mb-4">
-            PRIMA
+            BERAKHLAK 360
           </h1>
           <h2 className="text-2xl md:text-3xl font-semibold text-cyan-600 mb-2">
             Performa 360 Kepala Jakarta Pusat
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Sistem penilaian komprehensif untuk mengevaluasi performa kepemimpinan 
-            Kepala BPS Jakarta Pusat berdasarkan 8 aspek penting: kejujuran, loyalitas, 
-            penyelesaian pekerjaan, kualitas pekerjaan, kerjasama, pengembangan diri, 
-            komunikasi, dan percaya diri.
+            Sistem penilaian komprehensif 360 derajat untuk mengevaluasi performa kepemimpinan 
+            Kepala BPS Jakarta Pusat berdasarkan 11 aspek BERAKHLAK PNS: Berorientasi Pelayanan, 
+            Akuntabel, Kompeten, Harmonis, Loyal, Adaptif, Kolaboratif, Komitmen, Inisiatif Kerja, 
+            Kerjasama, dan Kepemimpinan.
           </p>
           {isInitializing && (
             <div className="mt-4 text-sm text-cyan-600">

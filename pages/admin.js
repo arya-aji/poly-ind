@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 export default function Admin() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -9,7 +10,7 @@ export default function Admin() {
   const [statistics, setStatistics] = useState(null);
   const [feedback, setFeedback] = useState([]);
   const [activeTab, setActiveTab] = useState("statistics");
-  
+
   const router = useRouter();
 
   useEffect(() => {
@@ -88,6 +89,10 @@ export default function Admin() {
   if (loading && !isAuthenticated) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-cyan-50 to-blue-100 flex items-center justify-center">
+        <Head>
+          <title>Admin Panel | BERAKHLAK 360</title>
+          <meta name="description" content="Panel admin untuk sistem penilaian BERAKHLAK 360" />
+        </Head>
         <div className="card p-8 max-w-md w-full">
           <div className="animate-pulse text-center text-cyan-600">
             Memuat...
@@ -100,6 +105,10 @@ export default function Admin() {
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-cyan-50 to-blue-100 flex items-center justify-center">
+        <Head>
+          <title>Admin Panel | BERAKHLAK 360</title>
+          <meta name="description" content="Panel admin untuk sistem penilaian BERAKHLAK 360" />
+        </Head>
         <div className="card p-8 max-w-md w-full">
           <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">
             Admin Panel
@@ -137,6 +146,10 @@ export default function Admin() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-cyan-50 to-blue-100">
+      <Head>
+        <title>Admin Panel | BERAKHLAK 360</title>
+        <meta name="description" content="Panel admin untuk sistem penilaian BERAKHLAK 360" />
+      </Head>
       <div className="container mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold text-gray-800">Admin Panel</h1>
@@ -220,7 +233,7 @@ export default function Admin() {
                   <h2 className="text-xl font-bold text-gray-800 mb-4">
                     Kesan, Kritik, dan Saran
                   </h2>
-                  
+
                   {feedback && feedback.length > 0 ? (
                     <div className="overflow-x-auto">
                       <table className="min-w-full divide-y divide-gray-200">
@@ -247,7 +260,7 @@ export default function Admin() {
                           {feedback.map((item, index) => (
                             <tr key={index}>
                               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                {item.voter_email}
+                                Anonymous
                               </td>
                               <td className="px-6 py-4 text-sm text-gray-500">
                                 <div className="max-h-32 overflow-y-auto">
@@ -265,7 +278,9 @@ export default function Admin() {
                                 </div>
                               </td>
                               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                {new Date(item.created_at).toLocaleDateString("id-ID")}
+                                {new Date(item.created_at).toLocaleDateString(
+                                  "id-ID"
+                                )}
                               </td>
                             </tr>
                           ))}

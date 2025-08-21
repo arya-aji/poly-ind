@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import { districts, aspects, getAllCandidates } from "../data/candidates";
 import Modal from "../components/Modal";
 
@@ -279,11 +280,15 @@ export default function Voting() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-cyan-50 to-blue-100">
+      <Head>
+        <title>Penilaian | BERAKHLAK 360</title>
+        <meta name="description" content="Formulir penilaian performa kepemimpinan Kepala BPS Jakarta Pusat" />
+      </Head>
       {/* Welcome Modal */}
       <Modal
         isOpen={showWelcomeModal}
         onClose={handleCloseWelcomeModal}
-        title="Penilaian Kepala BPS Kota Jakarta Pusat"
+        title="BERAKHLAK 360 - Penilaian Kepala BPS Kota Jakarta Pusat"
       >
         <div className="text-base px-2 py-1">
           <p className="font-medium mb-3">
@@ -354,7 +359,7 @@ export default function Voting() {
               {candidates.map((candidate) => (
                 <div key={candidate.name} className="mb-2 w-full">
                   <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-2 px-1 sm:px-2">
-                    Performa 360 Kepala Jakarta Pusat
+                    BERAKHLAK 360 - Penilaian Kepala Jakarta Pusat
                   </h1>
                   <hr className="border-gray-300 w-full my-3 sm:my-4" />
                   <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-800">
